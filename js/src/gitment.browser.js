@@ -3527,6 +3527,8 @@ var Gitment = function () {
     value: function loadMeta() {
       var _this7 = this;
 
+      console.log(this);
+
       var id = this.id,
           owner = this.owner,
           repo = this.repo;
