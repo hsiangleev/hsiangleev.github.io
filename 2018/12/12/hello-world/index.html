@@ -358,6 +358,18 @@
           
             
             
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2018/12/12/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/12/12/hello-world/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -724,7 +736,7 @@
     <!-- LOCAL: You can save these files to your site and update links -->
 
   
-  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
 <!-- END LOCAL -->
@@ -734,14 +746,20 @@
   border-bottom: none;
 }
 
+  a.gitment-editor-footer-tip, .gitment-container.gitment-footer-container {
+    display: none;
+  }
+
 </style>
 
 <script>
   function renderGitment() {
-    var gitment = new Gitment({
+    var gitment = new Gitmint({
       id: window.location.pathname,
       owner: 'hsiangleev',
       repo: 'hsiangleev.github.io',
+      
+        lang: 'zh-CN' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
       
       oauth: {
       
