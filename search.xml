@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[mongodb操作命令]]></title>
+    <url>%2F2019%2F01%2F29%2Fmongodb%2Fmongodb%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[$set 更新或添加属性 例123456789101112131415161718&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;item&quot; : &quot;A&quot; &#125;, &#123; &quot;item&quot; : &quot;B&quot;, &quot;score&quot; : 4.0, &quot;answers&quot; : [ &#123; &quot;q&quot; : 1.0, &quot;a&quot; : 0.0 &#125; ] &#125; ]&#125; 添加属性1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$set: &#123;&quot;arr.0.score&quot;: 10&#125;&#125;) 更新属性1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$set: &#123;&quot;arr.1.score&quot;: 10&#125;&#125;) 结果12345678910111213141516171819&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;item&quot; : &quot;A&quot;, &quot;score&quot; : 10.0 &#125;, &#123; &quot;item&quot; : &quot;B&quot;, &quot;score&quot; : 10.0, &quot;answers&quot; : [ &#123; &quot;q&quot; : 1.0, &quot;a&quot; : 0.0 &#125; ] &#125; ]&#125; $unset 删除对象的属性或把数组的其中一项变成null 例1234567891011121314151617181920212223&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;item&quot; : &quot;A&quot;, &quot;score&quot; : 5.5 &#125;, &#123; &quot;item&quot; : &quot;B&quot;, &quot;score&quot; : 4.0, &quot;answers&quot; : [ &#123; &quot;q&quot; : 1.0, &quot;a&quot; : 0.0 &#125;, &#123; &quot;q&quot; : 1.0, &quot;a&quot; : 0.0 &#125; ] &#125; ]&#125; 删除一个指定的字段12345// 删除arr数组的第一项的score属性db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$unset: &#123;&quot;arr.0.score&quot;: 1&#125;&#125;) 当匹配到的是数组元素，$unset替换指定的元素为null而不是删除掉指定的元素，此行为保持数组大小和位置不变；12345// 把数组arr的第二项的answers的第二项的值变为nulldb.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$unset: &#123;&quot;arr.1.answers.1&quot;: 1&#125;&#125;) 结果12345678910111213141516171819&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;item&quot; : &quot;A&quot; &#125;, &#123; &quot;item&quot; : &quot;B&quot;, &quot;score&quot; : 4.0, &quot;answers&quot; : [ &#123; &quot;q&quot; : 1.0, &quot;a&quot; : 0.0 &#125;, null ] &#125; ]&#125; $rename 重新命名属性名(不能操作数组) 例123456&#123; &quot;_id&quot; : 1.0, &quot;name&quot; : &#123; &quot;gge&quot; : 18 &#125;&#125; 1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$rename: &#123;&quot;name.gge&quot;: &quot;name.age&quot;&#125;&#125;) 结果123456&#123; &quot;_id&quot; : 1.0, &quot;name&quot; : &#123; &quot;age&quot; : 18 &#125;&#125; $pop 删除数组中的第一个或者最后一个元素(给$pop传递-1会删除第一个元素传递1会删除最后一个元素) 例12345678910&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 1, 2, 3, 4, 5 ]&#125; 删除数组第一个1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$pop: &#123;&quot;arr&quot;: -1&#125;&#125;) 删除数组最后一个1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$pop: &#123;&quot;arr&quot;: 1&#125;&#125;) 结果12345678&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 2, 3, 4 ]&#125; $pull 删除数组中符合条件的元素 例123456789101112131415&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;a&quot;: 2, &quot;b&quot;: 5, &quot;c&quot;: 8 &#125;, &#123; &quot;a&quot;: 6, &quot;b&quot;: 7, &quot;c&quot;: 8 &#125; ]&#125; 删除数组arr中的a&gt;=5的项1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$pull: &#123;&quot;arr&quot;: &#123;&quot;a&quot;: &#123;$gte: 5&#125;&#125;&#125;&#125;) 结果12345678910&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;a&quot; : 2, &quot;b&quot; : 5, &quot;c&quot; : 8 &#125; ]&#125; 使用$elemMatch匹配多个条件1234567891011121314151617181920212223242526272829&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;c&quot; : [ &#123; &quot;a&quot; : 10, &quot;b&quot; : 10 &#125;, &#123; &quot;a&quot; : 15, &quot;b&quot; : 15 &#125; ] &#125;, &#123; &quot;c&quot; : [ &#123; &quot;a&quot; : 20, &quot;b&quot; : 20 &#125;, &#123; &quot;a&quot; : 25, &quot;b&quot; : 25 &#125; ] &#125; ]&#125; 删除arr数组 中的c数组中 (a=25 &amp;&amp; b=25)1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$pull: &#123;&quot;arr&quot;: &#123;&quot;c&quot;: &#123;$elemMatch: &#123;&quot;a&quot;: 25,&quot;b&quot;:25&#125;&#125;&#125;&#125;&#125;) 结果1234567891011121314151617&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;c&quot; : [ &#123; &quot;a&quot; : 10, &quot;b&quot; : 10 &#125;, &#123; &quot;a&quot; : 15, &quot;b&quot; : 15 &#125; ] &#125; ]&#125; $push 向已有的数组末尾加入一个元素 例123456&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 5 ]&#125; 1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$push: &#123;&quot;arr&quot;: 10&#125;&#125;) 结果1234567&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 5, 10.0 ]&#125; 使用$position添加到任意位置12345// 在arr数组第二项插入四项数据db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$push: &#123;&quot;arr&quot;: &#123;$each: [15,16,17,18], $position: 1&#125;&#125;&#125;) 结果1234567891011&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 5, 15.0, 16.0, 17.0, 18.0, 10.0 ]&#125; $sort 数组排序 1为升序排列，-1为降序排列12345678910&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 3, 1, 5, 2, 6 ]&#125; 1234db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$push: &#123;&quot;arr&quot;: &#123;$each: [], $sort: 1&#125;&#125;&#125;) 结果12345678910&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 1, 2, 3, 5, 6 ]&#125; 2. 根据数组的某一项排序12345678910111213141516171819202122232425&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;a&quot; : 5, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 3, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 2, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 4, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 5, &quot;b&quot; : 6 &#125; ]&#125; 12345// 根据数组arr的a属性升序排列db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$push: &#123;&quot;arr&quot;: &#123;$each: [], $sort: &#123;&quot;a&quot;: 1&#125;&#125;&#125;&#125;) 结果12345678910111213141516171819202122232425&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;a&quot; : 2, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 3, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 4, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 5, &quot;b&quot; : 6 &#125;, &#123; &quot;a&quot; : 5, &quot;b&quot; : 6 &#125; ]&#125; $slice 数组截取 正数则从前向后，负数从后向前12345678910&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 1, 2, 3, 4, 5 ]&#125; 12345// 截取数组arr后三位db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0&#125;, &#123;$push: &#123;&quot;arr&quot;: &#123;$each: [], $slice: -3&#125;&#125;&#125;) 结果12345678&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 3, 4, 5 ]&#125; 占位符$，更新数组的某一项不确定位置的值 例11234&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 3, 4, 5, 20 ]&#125; 12345// 把数组arr值为20的变成10db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0, &quot;arr&quot;: 20&#125;, &#123;$set: &#123;&quot;arr.$&quot;: NumberInt(10)&#125;&#125;) 结果1234&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ 3, 4, 5, 10 ]&#125; 例21234567891011121314151617&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;a&quot; : 1, &quot;b&quot; : 10 &#125;, &#123; &quot;a&quot; : 2, &quot;b&quot; : 20 &#125;, &#123; &quot;a&quot; : 3, &quot;b&quot; : 30 &#125; ]&#125; 12345// 更新数组arr里面属性a为2的，把当前位置的b变成200db.getCollection(&apos;user&apos;).update( &#123;&quot;_id&quot;: 1.0, &quot;arr.a&quot;: 2&#125;, &#123;$set: &#123;&quot;arr.$.b&quot;: NumberInt(200)&#125;&#125;) 结果1234567891011121314151617&#123; &quot;_id&quot; : 1.0, &quot;arr&quot; : [ &#123; &quot;a&quot; : 1, &quot;b&quot; : 10 &#125;, &#123; &quot;a&quot; : 2, &quot;b&quot; : 200 &#125;, &#123; &quot;a&quot; : 3, &quot;b&quot; : 30 &#125; ]&#125;]]></content>
+      <categories>
+        <category>mongodb</category>
+      </categories>
+      <tags>
+        <tag>mongodb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mongodb安装]]></title>
+    <url>%2F2019%2F01%2F29%2Fmongodb%2Fmongodb%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[1. 进入mongodb\bin目录 =&gt;cmd 2. 在mongodb目录创建 \data\db 3. cmd执行mongod.exe --dbpath=D:\mongodb\data\db 4. 在mongodb目录创建 \data\log 5. cmd执行 mongod.exe --logpath=D:\mongodb\data\log\mongodb.log 6. 在mongodb目录创建配置文件（mongodb.config） 7. 配置文件内容 12dbpath=D:\mongodb\data\dblogpath=D:\mongodb\data\log\mongodb.log 8. 执行 mongod.exe --config D:\mongodb\mongodb.config 9. 添加到服务 （servies.msc） 1mongod.exe --dbpath=D:\mongodb\data\db --logpath=D:\mongodb\data\log\log.txt --install --serviceName "MongoDB" 10. 开启关闭服务 123net start mongodbnet stop mongodbsc delete "MongoDB" # 删除服务]]></content>
+      <categories>
+        <category>mongodb</category>
+      </categories>
+      <tags>
+        <tag>mongodb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mongodb数据导入导出]]></title>
+    <url>%2F2019%2F01%2F29%2Fmongodb%2Fmongodb%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%2F</url>
+    <content type="text"><![CDATA[进入mongodb的bin目录 1. 数据导出 -d: 数据库名称 -c: 表名 -o: 存储路径 –type: 导出类型 -f: 导出的数据mongoexport -d test -c blog -o G:\users.json --type json -f &quot;_id,data,user&quot; 2. 数据导入 -d: 数据库名称 -c: 表名 –file: 路径 –type: 导出类型mongoimport -d test -c us --file G:\users.json --type json]]></content>
+      <categories>
+        <category>mongodb</category>
+      </categories>
+      <tags>
+        <tag>mongodb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo创建博客]]></title>
+    <url>%2F2019%2F01%2F29%2Fhexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[hexo安装 使用hexo需事先安装nodejs,git 在命令行中输入npm install -g hexo-cli，全局安装hexo，因国内直接使用 npm 的官方镜像是非常慢，所以可以使用淘宝镜像，先输入命令npm install -g cnpm --registry=https://registry.npm.taobao.org，然后再执行cnpm install -g hexo-cli 代码123456var a=2;var b=3;console.log(a+b);if(a&gt;5)&#123; console.log(a)&#125; 项目创建 先进入某一磁盘 执行hexo init hexo，则是在当前磁盘下创建hexo项目 进入hexo文件夹，cd hexo 安装项目所需的模块，cnpm install]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mongodb加密]]></title>
+    <url>%2F2019%2F01%2F29%2Fmongodb%2Fmongodb%E5%8A%A0%E5%AF%86%2F</url>
+    <content type="text"><![CDATA[1. 切换到admin数据库 use admin 2. 管理员设置密码 db.createUser({user: &quot;root&quot;,pwd: &quot;123&quot;,roles: [&quot;root&quot;]}) 3. 验证是否成功 db.auth(&quot;root&quot;,&quot;123&quot;) 4. 给其它数据库添加用户 12use testdb.createUser(&#123;user: "hsianglee",pwd: "123",roles: [&#123;role: "readWrite",db: "test"&#125;]&#125;) 5. mongodb.config内容修改 12dbpath=F:\mongodb\data\db --authlogpath=F:\mongodb\data\log\mongodb.log 6. 重启服务 mongodb.exe --dbpath F:\mongodb\data\db --auth 7. node连接 mongodb://root:123@127.0.0.1:27017/test 8. 其它命令 1234db.system.users.find() # 查询已添加用户（切换到admin）db.auth("root","123") # 登录认证db.dropUser("lee") # 删除用户（先切换到当前数据库）db.updateUser("test",&#123;user: "",pwd: "", roles: [&#123;role: "read",db: "test"&#125;]&#125;) # 修改权限]]></content>
+      <categories>
+        <category>mongodb</category>
+      </categories>
+      <tags>
+        <tag>mongodb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F12%2F12%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+</search>
