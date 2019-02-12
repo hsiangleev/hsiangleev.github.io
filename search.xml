@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[自定义域名解析和安装SSL证书]]></title>
     <url>%2F2019%2F02%2F11%2F%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%2F%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%2F</url>
-    <content type="text"><![CDATA[自定义域名解析 1. 申请域名我是直接在阿里云购买的.xyz为后缀的域名，花了6块钱，阿里云域名购买。 2. 添加DNS解析 进入阿里云域名解析，可以看到当前购买的域名 点击域名进入域名解析界面 点击添加记录弹出窗口 添加下图的三项记录 3. 添加CNAME文件 在hexo根目录的source目录新建文件，名为CNAME(无后缀名)，文件内容为域名地址，我的是hsianglee.xyz，所以在文件内直接输入hsianglee.xyz并保存。 部署hexo网站hexo d -g。 过几分钟之后再访问域名应该就可以了 安装SSL证书，使用https访问网站]]></content>
+    <content type="text"><![CDATA[自定义域名解析 1. 申请域名我是直接在阿里云购买的.xyz为后缀的域名，阿里云域名购买。 2. 添加DNS解析 进入阿里云域名解析，可以看到当前购买的域名 点击域名进入域名解析界面 点击添加记录弹出窗口 添加下图的三项记录 3. 添加CNAME文件 在hexo根目录的source目录新建文件，名为CNAME(无后缀名)，文件内容为域名地址，我的是hsianglee.xyz，所以在文件内直接输入hsianglee.xyz并保存。 部署hexo网站hexo d -g。 过几分钟之后再访问域名应该就可以了 安装SSL证书，使用https访问网站 1. 证书购买 网址 选择Symantec购买免费版 购买完成后跳到SSL证书 2. 申请 点击申请会在右侧弹出 填写完成后点击下一步 点击验证之后会自动添加一条域名解析记录，然后点击下面的提交审核。 审核完成之后会提示为已签发 3. 添加域名解析记录 在域名解析页面添加四条记录 到github的博客设置里面把Enforce HTTPS 前面的checkbox选中 如果无法选中，则可以删除上面的域名保存之后再重新添加域名，等几分钟之后应该就可以了 然后使用https访问网站便会出现前面的锁了]]></content>
       <categories>
         <category>域名解析</category>
       </categories>
