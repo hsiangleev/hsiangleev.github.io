@@ -102,3 +102,36 @@ $(document).ready(function() {
       : NexT.utils.displaySidebar();
   }
 });
+
+// 图片放大
+$(document).ready(function() {
+  $(document.body).append('<div class="lee-increase"><img src=""></div>');
+  var isShow=false;
+  $(".post-body img").on("click",function() {
+    var src=$(this).attr("src");
+    var alt=$(this).attr("alt");
+    $(".lee-increase").show().children("img").attr("src", src).attr("alt",alt).width("auto");
+    $(document.body).css("overflow","hidden");
+    isShow=true;
+  })
+  $(".lee-increase").on("click",function() {
+    $(this).hide();
+    $(document.body).css("overflow","auto");
+    isShow=false;
+  })
+  // 鼠标滚动放大缩小
+  $(document).on('mousewheel DOMMouseScroll', function(e) {
+    if(!isShow) return;
+    e.preventDefault();
+    var wheel = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+    var delta = Math.max(-1, Math.min(1, wheel) );
+    if(delta<0){//向下滚动
+      var w=$(".lee-increase img").width();
+      $(".lee-increase img").width(w+50);
+    }else{//向上滚动
+      var w=$(".lee-increase img").width();
+      $(".lee-increase img").width(w-50);
+    }   
+  });
+});
+

@@ -1697,6 +1697,16 @@ pre .javascript .function {
 .fancybox-close:hover {
   border: none;
 }
+.post-copyright {
+  margin: 2em 0 0;
+  padding: 0.5em 1em;
+  border-left: 3px solid #ff1700;
+  background-color: #f9f9f9;
+  list-style: none;
+}
+.post-copyright i.fa {
+  font-size: 15px;
+}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -1892,7 +1902,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffffb8;
+  background: #ff39ed;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2935,4 +2945,33 @@ hr {
     width: auto;
     text-align: center;
   }
+}
+.post-body img {
+  cursor: pointer;
+  cursor: zoom-in;
+}
+.lee-increase {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  background-color: rgba(51,51,51,0.8);
+  z-index: 99999;
+  display: none;
+}
+.lee-increase>img {
+  max-width: 90%;
+  min-width: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  cursor: zoom-out;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
