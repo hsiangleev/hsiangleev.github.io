@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hsianglee.xyz/404.html</loc>
+    
+    <lastmod>2019-02-13T07:09:54.332Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hsianglee.xyz/about/index.html</loc>
+    
+    <lastmod>2019-02-13T07:03:44.040Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hsianglee.xyz/2019/02/12/hexo%E9%85%8D%E7%BD%AE/%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7%E6%95%88%E6%9E%9C%E5%92%8C%E6%A1%83%E5%BF%83%E6%95%88%E6%9E%9C/</loc>
     
     <lastmod>2019-02-12T07:34:13.050Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>https://hsianglee.xyz/2019/02/11/hexo%E9%85%8D%E7%BD%AE/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/</loc>
     
     <lastmod>2019-02-12T06:55:02.015Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hsianglee.xyz/about/index.html</loc>
-    
-    <lastmod>2019-01-30T09:33:40.302Z</lastmod>
     
   </url>
   
