@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hsianglee.xyz/"/>
-  <updated>2019-02-14T09:05:03.193Z</updated>
+  <updated>2019-02-12T07:34:13.050Z</updated>
   <id>https://hsianglee.xyz/</id>
   
   <author>
@@ -15,32 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>aa</title>
-    <link href="https://hsianglee.xyz/2019/02/14/essay/aa/"/>
-    <id>https://hsianglee.xyz/2019/02/14/essay/aa/</id>
-    <published>2019-02-14T09:04:25.000Z</published>
-    <updated>2019-02-14T09:05:03.193Z</updated>
-    
-    <content type="html"><![CDATA[<p>aaa</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;aaa&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="essay" scheme="https://hsianglee.xyz/categories/essay/"/>
-    
-    
-      <category term="essay" scheme="https://hsianglee.xyz/tags/essay/"/>
-    
-  </entry>
   
   <entry>
     <title>添加图片放大效果和桃心效果</title>
