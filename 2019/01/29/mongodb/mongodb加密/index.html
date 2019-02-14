@@ -81,7 +81,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: false,
     fastclick: false,
-    lazyload: false,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -114,8 +114,6 @@
 <meta name="twitter:description" content="1. 切换到admin数据库 use admin 2. 管理员设置密码 db.createUser({user: &amp;quot;root&amp;quot;,pwd: &amp;quot;123&amp;quot;,roles: [&amp;quot;root&amp;quot;]}) 3. 验证是否成功 db.auth(&amp;quot;root&amp;quot;,&amp;quot;123&amp;quot;) 4. 给其它数据库添加用户 12use testd">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="凉宫的博客" type="application/atom+xml">
 
 
 
@@ -706,13 +704,6 @@
           
 
           
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
 
           
             <div class="links-of-author motion-element">
@@ -857,6 +848,8 @@
 
 
 
+  
+
 
 
 
@@ -884,6 +877,9 @@
 
   
   <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
