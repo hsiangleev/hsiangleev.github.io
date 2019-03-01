@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hsianglee.cn/2019/02/28/layui/eleTree/</loc>
-    <lastmod>2019-02-28</lastmod>
+    <loc>https://hsianglee.cn/2019/03/01/js/js%E9%80%89%E4%B8%AD%E6%96%87%E6%9C%AC%E4%B8%8E%E5%A4%8D%E5%88%B6%E6%96%87%E6%9C%AC/</loc>
+    <lastmod>2019-03-01</lastmod>
+  </url>  <url>
+    <loc>https://hsianglee.cn/2019/02/28/js/eleTree/</loc>
+    <lastmod>2019-03-01</lastmod>
   </url>  <url>
     <loc>https://hsianglee.cn/2019/02/11/hexo%E9%85%8D%E7%BD%AE/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2019-02-20</lastmod>
