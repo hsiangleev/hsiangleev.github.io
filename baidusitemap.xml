@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hsianglee.cn/2019/03/22/js/parseInt%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/</loc>
+    <lastmod>2019-03-22</lastmod>
+  </url>  <url>
     <loc>https://hsianglee.cn/2019/03/09/js/webpack%E9%85%8D%E7%BD%AEreact/</loc>
-    <lastmod>2019-03-09</lastmod>
+    <lastmod>2019-03-14</lastmod>
   </url>  <url>
     <loc>https://hsianglee.cn/2019/03/06/js/%E6%9C%AA%E7%95%99%E5%BF%83%E7%9A%84vue%E7%BB%86%E8%8A%82/</loc>
     <lastmod>2019-03-07</lastmod>
