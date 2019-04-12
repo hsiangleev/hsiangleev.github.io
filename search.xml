@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[在网页引入github-stars和右上角显示fork me on github]]></title>
+    <title><![CDATA[网页引入github-stars和显示fork me on github]]></title>
     <url>%2F2019%2F04%2F10%2Fgithub%2F%E5%9C%A8%E7%BD%91%E9%A1%B5%E5%BC%95%E5%85%A5github-stars%2F</url>
     <content type="text"><![CDATA[页面引入github-stars直接访问地址https://img.shields.io/github/stars/hsiangleev/layuiExtend.svg，就可以看到图标了。其中把hsiangleev/layuiExtend字段换成自己的github名和仓库名就能看到自己的仓库stars数量了，stars换成forks，可以看到forks数量。地址后面还可以添加参数控制样式颜色之类的，具体配置可以看下网站shields.io示例：网站左上角或者右上角显示fork me on github使用：123&lt;a href="https://github.com/hsiangleev/layuiExtend"&gt; &lt;img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"&gt;&lt;/a&gt;示例：更多使用可以看下GitHub Ribbons]]></content>
       <categories>
