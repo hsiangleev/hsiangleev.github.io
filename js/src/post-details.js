@@ -1,3 +1,135 @@
-// build time:Mon Jun 17 2019 11:20:04 GMT+0800 (GMT+08:00)
-$(document).ready(function(){function e(){var e=".post-toc";var t=$(e);var a=".active-current";function i(){$(e+" "+a).removeClass(a.substring(1))}t.on("activate.bs.scrollspy",function(){var a=$(e+" .active").last();i();a.addClass("active-current");t.scrollTop(a.offset().top-t.offset().top+t.scrollTop()-t.height()/2)}).on("clear.bs.scrollspy",i);$("body").scrollspy({target:e})}e()});$(document).ready(function(){var e=$("html");var t=200;var a=$.isFunction(e.velocity);$(".sidebar-nav li").on("click",function(){var e=$(this);var i="sidebar-nav-active";var o="sidebar-panel-active";if(e.hasClass(i)){return}var s=$("."+o);var n=$("."+e.data("target"));a?s.velocity("transition.slideUpOut",t,function(){n.velocity("stop").velocity("transition.slideDownIn",t).addClass(o)}):s.animate({opacity:0},t,function(){s.hide();n.stop().css({opacity:0,display:"block"}).animate({opacity:1},t,function(){s.removeClass(o);n.addClass(o)})});e.siblings().removeClass(i);e.addClass(i)});$(".post-toc a").on("click",function(t){t.preventDefault();var i=NexT.utils.escapeSelector(this.getAttribute("href"));var o=$(i).offset().top;a?e.velocity("stop").velocity("scroll",{offset:o+"px",mobileHA:false}):$("html, body").stop().animate({scrollTop:o},500)});var i=$(".post-toc-content");var o=CONFIG.page.sidebar;if(typeof o!=="boolean"){var s=CONFIG.sidebar.display==="post"||CONFIG.sidebar.display==="always";var n=i.length>0&&i.html().trim().length>0;o=s&&n}if(o){CONFIG.motion.enable?NexT.motion.middleWares.sidebar=function(){NexT.utils.displaySidebar()}:NexT.utils.displaySidebar()}});$(document).ready(function(){$(document.body).append('<div class="lee-increase"><img src=""></div>');var e=false;$(".post-body img:not(.no-increase)").on("click",function(){var t=$(this).attr("src");var a=$(this).attr("alt");$(".lee-increase").show().children("img").attr("src",t).attr("alt",a).width("auto");$(document.body).css("overflow","hidden");e=true});$(".lee-increase").on("click",function(){$(this).hide();$(document.body).css("overflow","auto");e=false});$(document).on("mousewheel DOMMouseScroll",function(t){if(!e)return;t.preventDefault();var a=t.originalEvent.wheelDelta||-t.originalEvent.detail;var i=Math.max(-1,Math.min(1,a));var o=$(".lee-increase img").width();if(i<0){$(".lee-increase img").width(o+50)}else{$(".lee-increase img").width(o-50)}})});
-//rebuild by neat 
+/* global NexT, CONFIG */
+
+$(document).ready(function() {
+
+  function initScrollSpy() {
+    var tocSelector = '.post-toc';
+    var $tocElement = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    function removeCurrentActiveClass() {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    $tocElement
+      .on('activate.bs.scrollspy', function() {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        // Scrolling to center active TOC element if TOC content is taller then viewport.
+        $tocElement.scrollTop($currentActiveElement.offset().top - $tocElement.offset().top + $tocElement.scrollTop() - ($tocElement.height() / 2));
+      })
+      .on('clear.bs.scrollspy', removeCurrentActiveClass);
+
+    $('body').scrollspy({ target: tocSelector });
+  }
+
+  initScrollSpy();
+});
+
+$(document).ready(function() {
+  var html = $('html');
+  var TAB_ANIMATE_DURATION = 200;
+  var hasVelocity = $.isFunction(html.velocity);
+
+  $('.sidebar-nav li').on('click', function() {
+    var item = $(this);
+    var activeTabClassName = 'sidebar-nav-active';
+    var activePanelClassName = 'sidebar-panel-active';
+    if (item.hasClass(activeTabClassName)) {
+      return;
+    }
+
+    var currentTarget = $('.' + activePanelClassName);
+    var target = $('.' + item.data('target'));
+
+    hasVelocity
+      ? currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function() {
+        target
+          .velocity('stop')
+          .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+          .addClass(activePanelClassName);
+      })
+      : currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function() {
+        currentTarget.hide();
+        target
+          .stop()
+          .css({'opacity': 0, 'display': 'block'})
+          .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function() {
+            currentTarget.removeClass(activePanelClassName);
+            target.addClass(activePanelClassName);
+          });
+      });
+
+    item.siblings().removeClass(activeTabClassName);
+    item.addClass(activeTabClassName);
+  });
+
+  // TOC item animation navigate & prevent #item selector in adress bar.
+  $('.post-toc a').on('click', function(e) {
+    e.preventDefault();
+    var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+    var offset = $(targetSelector).offset().top;
+
+    hasVelocity
+      ? html.velocity('stop').velocity('scroll', {
+        offset  : offset + 'px',
+        mobileHA: false
+      })
+      : $('html, body').stop().animate({
+        scrollTop: offset
+      }, 500);
+  });
+
+  // Expand sidebar on post detail page by default, when post has a toc.
+  var $tocContent = $('.post-toc-content');
+  var display = CONFIG.page.sidebar;
+  if (typeof display !== 'boolean') {
+    // There's no definition sidebar in the page front-matter
+    var isSidebarCouldDisplay = CONFIG.sidebar.display === 'post'
+     || CONFIG.sidebar.display === 'always';
+    var hasTOC = $tocContent.length > 0 && $tocContent.html().trim().length > 0;
+    display = isSidebarCouldDisplay && hasTOC;
+  }
+  if (display) {
+    CONFIG.motion.enable
+      ? NexT.motion.middleWares.sidebar = function() {
+        NexT.utils.displaySidebar();
+      }
+      : NexT.utils.displaySidebar();
+  }
+});
+
+// 图片放大
+$(document).ready(function() {
+  $(document.body).append('<div class="lee-increase"><img src=""></div>');
+  var isShow=false;
+  $(".post-body img:not(.no-increase)").on("click",function() {
+    var src=$(this).attr("src");
+    var alt=$(this).attr("alt");
+    $(".lee-increase").show().children("img").attr("src", src).attr("alt",alt).width("auto");
+    $(document.body).css("overflow","hidden");
+    isShow=true;
+  })
+  $(".lee-increase").on("click",function() {
+    $(this).hide();
+    $(document.body).css("overflow","auto");
+    isShow=false;
+  })
+  // 鼠标滚动放大缩小
+  $(document).on('mousewheel DOMMouseScroll', function(e) {
+    if(!isShow) return;
+    e.preventDefault();
+    var wheel = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+    var delta = Math.max(-1, Math.min(1, wheel) );
+    var w=$(".lee-increase img").width();
+    if(delta<0){//向下滚动
+      $(".lee-increase img").width(w+50);
+    }else{//向上滚动
+      $(".lee-increase img").width(w-50);
+    }   
+  });
+});
