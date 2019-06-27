@@ -1,3 +1,3 @@
-// build time:Thu Jun 27 2019 16:04:14 GMT+0800 (GMT+08:00)
+// build time:Thu Jun 27 2019 17:01:55 GMT+0800 (GMT+08:00)
 (function(){var t={1:"https://uploadbeta.com/api/pictures/random",2:"https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture",3:"http://acg.bakayun.cn/randbg.php",4:"https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302",11:"https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&device=mobile"};var e=t["2"];if($(document.body).width()<768)e=t["11"];$(document.body).append('<div class="lee-bg">'+'<img src="'+e+'" />'+"</div>")})($);
 //rebuild by neat 
