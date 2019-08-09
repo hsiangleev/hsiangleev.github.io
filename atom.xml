@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hsianglee.cn/"/>
-  <updated>2019-07-11T02:27:16.299Z</updated>
+  <updated>2019-08-09T05:48:58.945Z</updated>
   <id>https://hsianglee.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js replace正则替换</title>
+    <link href="https://hsianglee.cn/2019/08/09/js/js%20replace%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/"/>
+    <id>https://hsianglee.cn/2019/08/09/js/js replace正则替换/</id>
+    <published>2019-08-09T02:43:56.000Z</published>
+    <updated>2019-08-09T05:48:58.945Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Fri Aug 09 2019 13:50:19 GMT+0800 (GMT+08:00) --><p>replace() 方法<strong>返回</strong>一个由替换值替换一些或所有匹配的模式后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p><p><strong>1. 当第二个参数是字符串时，可以使用特殊变量名</strong></p><table><thead><tr><th>变量名</th><th>代表的值</th></tr></thead><tbody><tr><td>$$</td><td>插入一个 “$”</td></tr><tr><td>$&amp;</td><td>插入匹配的子串</td></tr><tr><td>$`</td><td>插入当前匹配的子串左边的内容</td></tr><tr><td>$’</td><td>插入当前匹配的子串右边的内容</td></tr><tr><td>$n</td><td>假如第一个参数是 RegExp对象，并且 n 是个小于100的非负整数，那么插入第 n 个<strong>括号匹配的字符串</strong></td></tr></tbody></table><p>示例：<br></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"123&#123;&#123;name&#125;&#125;456"</span>;</span><br><span class="line"><span class="comment">// $$值为$</span></span><br><span class="line"><span class="comment">// 当前正则匹配到的值为 &#123;&#123;name&#125;&#125; ，即$&amp;值为&#123;&#123;name&#125;&#125;</span></span><br><span class="line"><span class="comment">// 第一个括号$1匹配的字符串为 &#123;&#123; ，第二个括号$2匹配的字符串为 &#125;&#125;</span></span><br><span class="line"><span class="comment">// 匹配的字符串左侧的内容为 123，即$`值为123</span></span><br><span class="line"><span class="comment">// 匹配的字符串右侧的值为 456 ，即$'值为456</span></span><br><span class="line">str.replace(<span class="regexp">/(\&#123;\&#123;)\w+(\&#125;\&#125;)/</span>,<span class="string">"$1code$2"</span>);      <span class="comment">// 123&#123;&#123;code&#125;&#125;456</span></span><br><span class="line">str.replace(<span class="regexp">/(\&#123;\&#123;)\w+(\&#125;\&#125;)/</span>,<span class="string">"$1co$$de$2"</span>);    <span class="comment">// 123&#123;&#123;co$de&#125;&#125;456</span></span><br><span class="line">str.replace(<span class="regexp">/(\&#123;\&#123;)\w+(\&#125;\&#125;)/</span>,<span class="string">"$1co$&amp;de$2"</span>);    <span class="comment">// 123&#123;&#123;co&#123;&#123;name&#125;&#125;de&#125;&#125;456</span></span><br><span class="line">str.replace(<span class="regexp">/(\&#123;\&#123;)\w+(\&#125;\&#125;)/</span>,<span class="string">"$1co$`de$2"</span>);    <span class="comment">// 123&#123;&#123;co123de&#125;&#125;456</span></span><br><span class="line">str.replace(<span class="regexp">/(\&#123;\&#123;)\w+(\&#125;\&#125;)/</span>,<span class="string">"$1co$'de$2"</span>);    <span class="comment">// 123&#123;&#123;co456de&#125;&#125;456</span></span><br></pre></td></tr></table></figure><p></p><p><strong>2. 第二个参数也可以使用函数，函数的参数含义为：</strong></p><table><thead><tr><th>变量名</th><th>代表的值</th></tr></thead><tbody><tr><td>match</td><td>匹配的子串。（对应于上述的$&amp;。）</td></tr><tr><td>p1,p2,…</td><td>假如replace()方法的第一个参数是一个RegExp 对象，则代表第n个括号匹配的字符串。（对应于上述的$1，$2等。）</td></tr><tr><td>offset</td><td>匹配到的子字符串在原字符串中的偏移量（即匹配的第一个字符在原字符串的索引）。</td></tr><tr><td>string</td><td>被匹配的原字符串。</td></tr></tbody></table><p>示例：<br></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"123&#123;&#123;name&#125;&#125;456"</span>;</span><br><span class="line"><span class="keyword">var</span> s=str.replace(<span class="regexp">/(\&#123;\&#123;\s*)\w+(\s*\&#125;\&#125;)/</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match,s1,s2,offset,string</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(match)      <span class="comment">// &#123;&#123;name&#125;&#125;</span></span><br><span class="line">    <span class="built_in">console</span>.log(s1)         <span class="comment">// &#123;&#123;</span></span><br><span class="line">    <span class="built_in">console</span>.log(s2)         <span class="comment">// &#125;&#125;</span></span><br><span class="line">    <span class="built_in">console</span>.log(offset)     <span class="comment">// 3</span></span><br><span class="line">    <span class="built_in">console</span>.log(string)     <span class="comment">// 123&#123;&#123;name&#125;&#125;456</span></span><br><span class="line">    <span class="keyword">return</span> s1+<span class="string">"code"</span>+s2</span><br><span class="line">&#125;)      <span class="comment">// 123&#123;&#123;code&#125;&#125;456</span></span><br></pre></td></tr></table></figure><p></p><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      js字符串的方法replace的第二个参数详解
+    
+    </summary>
+    
+      <category term="js" scheme="https://hsianglee.cn/categories/js/"/>
+    
+    
+      <category term="js" scheme="https://hsianglee.cn/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>js十大排序算法记录</title>
