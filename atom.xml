@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hsianglee.cn/"/>
-  <updated>2019-08-09T05:48:58.945Z</updated>
+  <updated>2019-08-10T04:21:32.217Z</updated>
   <id>https://hsianglee.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>三省吾身</title>
+    <link href="https://hsianglee.cn/2019/08/10/%E9%9A%8F%E7%AC%94/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/"/>
+    <id>https://hsianglee.cn/2019/08/10/随笔/三省吾身/</id>
+    <published>2019-08-10T04:20:03.000Z</published>
+    <updated>2019-08-10T04:21:32.217Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Sat Aug 10 2019 12:24:01 GMT+0800 (GMT+08:00) --><p style="text-indent:2em">不知道自己为什么会如此恋旧，比如去菜市场买菜，如果连续几天在这家买，今天突然想去另一家了，走过这家小摊时会有一种愧疚感，不敢直视摊主。租房也是如此，与朋友合租不到一年，他走之后我却不想换房，虽然知道一个人住这么大的房子有点奢侈，虽然房间连空调也没有，如果换一个房子的话完全可以租个小点的设施齐全的并且租金也会便宜点，可是终究下不了换的决心，或许也只是因为习惯吧。</p><p style="text-indent:2em">一个人久了会上瘾，虽然心里也会想着需要谈恋爱了，遇到心怡的人也有想撩她的想法，但是每次想到自己是素食者，想到自己挑食如此严重，吃个饭都是件麻烦事也就打消了念头。也曾想过改变，可是恶心反胃之情溢于言表，想想自己终究也只是普通人吧，连吃饭都不能逼迫自己一把。</p><p style="text-indent:2em">人际交往最难，遇到不熟的人可以直接走过不打招呼，遇到很熟悉的人可以追上去喊他，但最怕遇到半熟不熟的人，打招呼也不是，不打招呼也不是，分外尴尬。还有一个性格缺点便是不知道怎么保持友谊，可以一起打游戏的也还好，可以喊他打游戏顺便聊聊近况，其他的如果他不找我我也基本不找他聊，虽然知道这样很不好，但却怕打扰他，不知如何聊，终究越走越远。</p><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Sat Aug 10 2019 12:24:01 GMT+0800 (GMT+08:00) --&gt;&lt;p style=&quot;text-indent:2em&quot;&gt;不知道自己为什么会如此恋旧，比如去菜市场买菜，如果连续几天在这家买，今天突然想去另一家了，走过这
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://hsianglee.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://hsianglee.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>js replace正则替换</title>
