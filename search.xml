@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[uipath studio编辑器介绍与使用]]></title>
+    <url>%2F2019%2F11%2F07%2Fuipath%2Fuipath%20studio%E7%BC%96%E8%BE%91%E5%99%A8%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[打开编辑器默认为英文，可以改为中文，点击settings=&gt;general=&gt;language，选择中文简体，改完之后需要重启编辑器，但是改为中文之后里面所有的activities都会变成中文的，搜索的时候不太好搜，所以我便没有改。在start的右边new process下面的process，选择项目名称和路径就可以创建了项目了，编辑器对应的功能如下图studio官方文档，所有的活动在文档里面基本都能搜到，列举一些常用的活动：Assign: 变量赋值，例如把某个值赋给某个变量Click: 鼠标单击操作Double Click: 鼠标双击操作Type Into: input框输入Delay: 延时Send HotKey: 键盘按键Message Box: 编辑器弹窗，测试使用excel相关常用活动：Excel Application Scope: 类似一个包装，excel的相关操作都要放到这个里面，需要填写的是excel路径Read Range: 读取excel的某个表，输出的数据类型为DataTable类型For Each Row: 遍历DataTable类型的数据取值，如row(“表头”)Write Range: 数据写入excel]]></content>
+      <categories>
+        <category>uipath</category>
+      </categories>
+      <tags>
+        <tag>uipath</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[uipath下载安装]]></title>
     <url>%2F2019%2F11%2F07%2Fuipath%2Fuipath%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[首先是下载软件我便下载了好久，因为我一开始进的是中文官网，中文官网和英文的好像有些区别，在中文官网点击试用的时候先选择的是社区版本，然后需要填写个人信息包括邮箱地址，软件下载方式发送到邮箱，但是我提交之后一直收不到邮箱，又试了一下企业试用版的也是一样收不到邮箱。无奈之下进入英文的网站，，点击Start Trial之后，选择Community版本发现和中文不同的地方是需要登录，然后使用office账户登录之后在这里发现下载地址，社区版下载下载完成双击安装，但是没有提示安装的路径，因为需要选择版本，我直接选择社区版，然后选择第一个先行版，然后就直接自动打开了软件，然后用win10的搜索uipath发现除了uipath studio还有一个uipath robot，到这里便安装完成了。需要注意的是这个下载下来的是64位的软件，无法安装到32位的电脑安装的时候需要联网电脑的framework版本最低为4.6.1软件默认安装到了用户目录，即C:\Users\...\AppData\Local\UiPath]]></content>
