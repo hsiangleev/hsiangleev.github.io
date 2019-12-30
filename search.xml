@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux命令之用户与组管理]]></title>
+    <url>%2F2019%2F12%2F30%2Flinux%2F%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84%E7%AE%A1%E7%90%86%2F</url>
+    <content type="text"><![CDATA[用户管理useradd: 添加用户useradd -g test -G groupA,groupB -d /home/test test # 创建一个用户，初始群组为test，并添加到群组groupA和groupB中，创建自家目录/home/test并指定登录目录，用户名为testuseradd -d /www -M test # 不创建用户自家目录，指定登录目录 /www，用户名为testuseradd -e &quot;2019-12-30&quot; test # 添加用户，并给用户设置有效期userdel: 删除用户userdel test # 删除用户userdel -r test # 删除用户，并删除用户home目录passwd: 修改用户密码passwd test # 修改test用户密码usermod: 修改用户信息usermod -a -G groupC,groupD test # test用户添加到groupC,groupD群组，并且不离开其他群组(不加 -a 则离开其他群组)usermod -l test2 test # 修改test登录名为test2usermod -L test # 锁定用户usermod -U test # 解除锁定su user # 切换用户cat /etc/passwd # 查看所有用户users # 查看当前有哪些用户登录(w/who)组管理groupadd: 添加组groupdel: 删除组groupmems: 组成员管理groupmems -g groupA -l # 显示组groupA中的所有用户groupmems -g groupA -a test # 把test用户添加到groupA组中groupmems -g groupA -d test # 删除组groupA中的用户testgroupmems -g groupA -p # 删除组groupA的所有用户groupmod: 修改组groupmod groupA -n groupB # 修改组名groupA为groupBgroups: 显示用户所在的组groups: # 显示当前用户所在的组groups test # 显示test用户所在的组]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[uipath studio编辑器介绍与使用]]></title>
     <url>%2F2019%2F11%2F07%2Fuipath%2Fuipath%20studio%E7%BC%96%E8%BE%91%E5%99%A8%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[打开编辑器默认为英文，可以改为中文，点击settings=&gt;general=&gt;language，选择中文简体，改完之后需要重启编辑器，但是改为中文之后里面所有的activities都会变成中文的，搜索的时候不太好搜，所以我便没有改。在start的右边new process下面的process，选择项目名称和路径就可以创建了项目了，编辑器对应的功能如下图studio官方文档，所有的活动在文档里面基本都能搜到，列举一些常用的活动：Assign: 变量赋值，例如把某个值赋给某个变量Click: 鼠标单击操作Double Click: 鼠标双击操作Type Into: input框输入Delay: 延时Send HotKey: 键盘按键Message Box: 编辑器弹窗，测试使用excel相关常用活动：Excel Application Scope: 类似一个包装，excel的相关操作都要放到这个里面，需要填写的是excel路径Read Range: 读取excel的某个表，输出的数据类型为DataTable类型For Each Row: 遍历DataTable类型的数据取值，如row(“表头”)Write Range: 数据写入excel]]></content>
