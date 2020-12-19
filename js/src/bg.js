@@ -1,3 +1,21 @@
-// build time:Wed Dec 16 2020 17:08:28 GMT+0800 (GMT+08:00)
-(function(){var t={1:"https://uploadbeta.com/api/pictures/random",2:"https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture",3:"http://acg.bakayun.cn/randbg.php",4:"https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302",11:"https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&device=mobile"};var e=t["4"];if($(document.body).width()<768)e=t["11"];$(document.body).append('<div class="lee-bg">'+'<img src="'+e+'" />'+"</div>");$.get("https://v1.hitokoto.cn/",{},function(t){$(".site-description.motion-element").text(t.hitokoto)})})($);
-//rebuild by neat 
+;(function() {
+    var obj={
+        "1": "https://uploadbeta.com/api/pictures/random",                                          // 必应风景人物
+        "2": "https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture",        // 必应每日图片
+        "3": "http://acg.bakayun.cn/randbg.php",                                                    // 二次元
+        "4": "https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302",                   // 风景（有点慢）
+        "11": "https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&device=mobile",    // 手机 
+    }
+    var src=obj["4"];
+    if($(document.body).width()<768) src=obj["11"];
+    $(document.body).append(
+        '<div class="lee-bg">'+
+            '<img src="'+src+'" />'+
+        '</div>'
+    )
+
+    $.get("https://v1.hitokoto.cn/",{},function(data) {
+        $(".site-description.motion-element").text(data.hitokoto);
+    })
+
+})($)
