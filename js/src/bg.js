@@ -18,4 +18,9 @@
         $(".site-description.motion-element").text(data.hitokoto);
     })
 
+    // 页面重定向
+    var host = location.hostname
+    if(host !== "hsianglee.cn" && host !== "localhost" && host !== "127.0.0.1"){
+        location.replace("https://hsianglee.cn" + location.pathname)
+    }
 })($)
