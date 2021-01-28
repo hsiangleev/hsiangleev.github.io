@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hsianglee.cn/"/>
-  <updated>2020-12-16T09:07:42.368Z</updated>
+  <updated>2021-01-28T01:10:13.907Z</updated>
   <id>https://hsianglee.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>暮色沉沉</title>
+    <link href="https://hsianglee.cn/2021/01/28/essay/%E6%9A%AE%E8%89%B2%E6%B2%89%E6%B2%89/"/>
+    <id>https://hsianglee.cn/2021/01/28/essay/暮色沉沉/</id>
+    <published>2021-01-28T01:00:26.000Z</published>
+    <updated>2021-01-28T01:10:13.907Z</updated>
+    
+    <content type="html"><![CDATA[<div style="text-align:center">暮色沉沉，灯火昏昏</div><br><div style="text-align:center">车鸣阵阵，前路森森</div><br><div style="text-align:center">冷风凛凛，薄衣紧紧</div><br><div style="text-align:center">薄酒温温，心甚岑岑</div><br><div style="text-align:center">日复恳恳，虽有愤愤</div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;div style=&quot;text-align:center&quot;&gt;暮色沉沉，灯火昏昏&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;text-align:center&quot;&gt;车鸣阵阵，前路森森&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;text-align:center&quot;&gt;冷风凛凛，薄衣紧紧
+      
+    
+    </summary>
+    
+      <category term="兮词" scheme="https://hsianglee.cn/categories/%E5%85%AE%E8%AF%8D/"/>
+    
+    
+      <category term="兮词" scheme="https://hsianglee.cn/tags/%E5%85%AE%E8%AF%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>基于vite+elementPlus实现后台管理系统</title>
@@ -467,30 +492,6 @@
     
       <category term="js" scheme="https://hsianglee.cn/categories/js/"/>
     
-    
-      <category term="js" scheme="https://hsianglee.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于layui的tree组件</title>
-    <link href="https://hsianglee.cn/2019/02/28/js/eleTree/"/>
-    <id>https://hsianglee.cn/2019/02/28/js/eleTree/</id>
-    <published>2019-02-28T06:23:05.000Z</published>
-    <updated>2019-04-11T06:49:14.061Z</updated>
-    
-    <content type="html"><![CDATA[<p style="font-size:18px;font-weight:500;text-indent:2em">因公司使用的是layui框架，而layui的树组件实现的功能太少，所以便想着自己实现一个，顺便练练手，期间因逻辑混乱代码重构过一次。</p><h4 id="插件整体思路"><a href="#插件整体思路" class="headerlink" title="插件整体思路"></a>插件整体思路</h4><ol><li>对外仅暴漏出eleTree接口，eleTree有两个方法，on方法是layui封装的事件机制，render方法为初始化，调用render方法时，初始化树,生成实例对象</li><li>thisTree为实例对象上对外的方法</li><li>Class为真正的构造函数，主体结构如下：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eleTree=&#123;</span><br><span class="line">    on: <span class="function"><span class="keyword">function</span>(<span class="params">events, callback</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> layui.onevent.call(<span class="keyword">this</span>, MOD_NAME, events, callback);</span><br><span class="line">    &#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> inst = <span class="keyword">new</span> Class(options);</span><br><span class="line">        <span class="keyword">return</span> thisTree.call(inst);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> thisTree=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _self=<span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> options = _self.config;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 暴漏外面的方法</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        append: <span class="function"><span class="keyword">function</span>(<span class="params">key,data</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(options.data.length===<span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">return</span> _self.append.call(_self,key,data);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Class=<span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line">Class.prototype=&#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Class,</span><br><span class="line">    append: function(key,data) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol><h4 id="代码执行过程"><a href="#代码执行过程" class="headerlink" title="代码执行过程"></a>代码执行过程</h4><ol><li>当调用<code>var el=eleTree.render({})</code>的时候调用Class构造函数初始化树，执行<code>thisTree.call(inst);</code>，即执行thisTree函数，函数内部的this为inst实例对象，然后返回一个包含多个方法的对象</li><li>所以返回值el为包含多个方法的对象</li><li>当调用<code>el.append()</code>方法时，执行inst实例对象的append方法，即执行Class原型链上的append方法，append方法内部this还是inst实例对象</li></ol><p><a href="https://layuiextend.hsianglee.cn/eletree/" target="_blank" rel="noopener">在线文档</a><br><a href="https://layuiextend.hsianglee.cn/eletree/test.html" target="_blank" rel="noopener">在线示例</a><br><a href="https://github.com/hsiangleev/layuiExtend" target="_blank" rel="noopener">github源码</a></p>]]></content>
-    
-    <summary type="html">
-    
-      仿照elementUI接口实现的基于layui的树组件
-    
-    </summary>
-    
-      <category term="js" scheme="https://hsianglee.cn/categories/js/"/>
-    
-    
-      <category term="layui" scheme="https://hsianglee.cn/tags/layui/"/>
     
       <category term="js" scheme="https://hsianglee.cn/tags/js/"/>
     
